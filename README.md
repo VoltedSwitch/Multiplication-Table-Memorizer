@@ -18,3 +18,7 @@ python3 main.py
 2. Review each answer when it appears, then try to remember it.
 3. Enter the product when prompted. If it’s incorrect, you can try again.
 4. Complete the table from 1 to 10. Press **Enter** to practice another table, or type **q** to quit. 🏆
+
+## 📝 Release notes
+
+See the [release notes](RELEASE_NOTES.md) for version history and updates.
