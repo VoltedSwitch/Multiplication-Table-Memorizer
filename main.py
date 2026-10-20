@@ -93,7 +93,7 @@ while True:
             while countdown2 > 0:
                 always_display()
                 print(
-                    f"Keep correct answer to {digit_input} x {digit} = # in mind\nuntil quiz prompt appears! Timer ({Colors.BOLD}{countdown2}{Colors.END})"
+                    f"Keep correct answer to {digit_input} x {digit} in mind\nuntil quiz prompt appears! Timer ({Colors.BOLD}{countdown2}{Colors.END})"
                 )
                 time.sleep(1)
                 countdown2 -= 1
