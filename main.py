@@ -15,7 +15,7 @@ def expression_prompt(context: str):
         case "quiz":
             return f"{digit_input} x {digit} = ?"
         case "normal":
-            return f"{digit_input} x {digit} = {Colors.BOLD}{digit_input * digit}{Colors.END}"
+            return f"{digit_input} x {digit} = {Colors.BOLD}{Colors.UNDERLINE}{digit_input * digit}{Colors.END}"
 
 
 def timed_prompt(prompt: str, seconds: int, show_timer=False):
