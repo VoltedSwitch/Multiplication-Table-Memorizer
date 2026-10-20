@@ -77,15 +77,26 @@ while True:
         hide_cursor()
 
         while True:
-            countdown = 3
-            while countdown > 0:
+            countdown1 = 3
+            while countdown1 > 0:
                 always_display()
                 print(
-                    f"Correct Answer View Timer ({Colors.BOLD}{countdown}{Colors.END})"
+                    f"Correct Answer View Timer ({Colors.BOLD}{countdown1}{Colors.END})"
                 )
                 print(f"ANSWER VIEW: {expression_prompt(context="normal")}")
                 time.sleep(1)
-                countdown -= 1
+                countdown1 -= 1
+                clear_screen()
+
+            countdown2 = 5
+
+            while countdown2 > 0:
+                always_display()
+                print(
+                    f"Keep correct answer to {digit_input} x {digit} = # in mind\nuntil quiz prompt appears! Timer ({Colors.BOLD}{countdown2}{Colors.END})"
+                )
+                time.sleep(1)
+                countdown2 -= 1
                 clear_screen()
 
             discard_pending_input()
