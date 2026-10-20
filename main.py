@@ -86,3 +86,8 @@ while True:
 
             if answer == correct_answer:
                 break
+
+        if score == WIN_SCORE:
+            print(
+                f"Congrats 🥳 on memorizing the multiplication table of {digit_input}!"
+            )
