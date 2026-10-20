@@ -13,7 +13,7 @@ def expression_prompt(context: str):
         case "quiz":
             return f"{digit_input} x {digit} = ?"
         case "normal":
-            return f"{digit_input} x {digit} = {digit_input * digit}"
+            return f"{digit_input} x {digit} = {Colors.BOLD}{digit_input * digit}{Colors.END}"
 
 
 def timed_prompt(prompt: str, seconds: int, show_timer=False):
@@ -49,9 +49,9 @@ while True:
 
     for digit in range(1, WIN_SCORE + 1):
         hide_cursor()
-        
+
         while True:
-            countdown = 3   
+            countdown = 3
             while countdown > 0:
                 purpose_title()
                 display_current_score()
@@ -62,7 +62,7 @@ while True:
                 time.sleep(1)
                 countdown -= 1
                 clear_screen()
-           
+
             purpose_title()
             display_current_score()
             print(expression_prompt(context="quiz"))
@@ -77,42 +77,42 @@ while True:
 
             if answer == correct_answer:
                 score += points_per_correct_answer
-                score_change += points_per_correct_answer
+                score_change = points_per_correct_answer
                 purpose_title()
                 display_current_score()
                 print(
                     f"{answer} is correct! You earned {score_change} memory point{'' if score_change == 1 else 's'}!"
                 )
+                time.sleep(2)
+                clear_screen()
+                break
             else:
                 if score > 1:
                     score -= points_lose_per_wrong_answer
-                    score_change -= points_lose_per_wrong_answer
+                    score_change = points_lose_per_wrong_answer
                 purpose_title()
                 display_current_score()
                 print(
                     f"{answer} is incorrect! Try again! {f'You lost {score_change} memory point{"" if score_change == 1 else "s"}!' if score > 1 else ''}"
                 )
-            time.sleep(2)
+                time.sleep(2)
+                clear_screen()
+
+    else:
+        while True:
+            purpose_title()
+            print(
+                f"Congrats 🥳 on successfully memorizing the multiplication table of {digit_input} till {WIN_SCORE}!"
+            )
+            print()
+            again = input(
+                "Click 'Enter' to return to memorizing a table of another digit or q to quit"
+            ).strip()
             clear_screen()
 
-            if score == WIN_SCORE:
-                while True:
-                    purpose_title()
-                    print(
-                        f"Congrats 🥳 on successfully memorizing the multiplication table of {digit_input} till {WIN_SCORE}!"
-                    )
-                    print()
-                    again = input(
-                        "Click 'Enter' to return to memorizing a table of another digit or q to quit"
-                    ).strip()
-                    clear_screen()
-
-                    if again == "q":
-                        purpose_title()
-                        print("Thanks for memorizing! Hope to see you again!")
-                        exit()
-                    elif again == "":
-                        break
-
-                if again == "":
-                    break
+            if again == "q":
+                purpose_title()
+                print("Thanks for memorizing! Hope to see you again!")
+                exit()
+            elif again == "":
+                break
