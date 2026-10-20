@@ -141,4 +141,5 @@ while True:
                 print("Thanks for memorizing! Hope to see you again!")
                 exit()
             elif again == "":
+                score = 0
                 break
