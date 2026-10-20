@@ -1,4 +1,6 @@
 import time
+import sys
+import termios
 from terminal.cleaners import clear_screen, hide_cursor, show_cursor
 from terminal.colors import Colors
 
@@ -52,6 +54,12 @@ def get_valid_numerical_input(prompt: str):
             return int(answer)
 
 
+def discard_pending_input():
+    """Drop keys typed during the answer-view countdown."""
+    if sys.stdin.isatty():
+        termios.tcflush(sys.stdin.fileno(), termios.TCIFLUSH)
+
+
 WIN_SCORE = 10
 
 score = 0
@@ -80,6 +88,7 @@ while True:
                 countdown -= 1
                 clear_screen()
 
+            discard_pending_input()
             show_cursor()
             answer = get_valid_numerical_input("Answer from memory only: ")
             clear_screen()
