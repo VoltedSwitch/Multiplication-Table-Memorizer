@@ -13,7 +13,7 @@ def purpose_title():
 def expression_prompt(context: str):
     match context:
         case "quiz":
-            return f"{digit_input} x {digit} = ?"
+            return f"{digit_input} x {digit} ="
         case "normal":
             return f"{digit_input} x {digit} = {Colors.BOLD}{Colors.UNDERLINE}{digit_input * digit}{Colors.END}"
 
@@ -41,17 +41,6 @@ def display_current_score():
 def always_display():
     purpose_title()
     display_current_score()
-
-
-def get_valid_numerical_input(prompt: str):
-    while True:
-        always_display()
-        print(expression_prompt(context="quiz"))
-        print()
-        answer = input(prompt).strip()
-        clear_screen()
-        if answer.isdigit():
-            return int(answer)
 
 
 def discard_pending_input():
@@ -101,8 +90,14 @@ while True:
 
             discard_pending_input()
             show_cursor()
-            answer = get_valid_numerical_input("Answer from memory only: ")
-            clear_screen()
+            while True:
+                always_display()
+                answer = input(f"{expression_prompt(context="quiz")} ").strip()
+                print()
+                clear_screen()
+                if answer.isdigit():
+                    answer = int(answer)
+                    break
             hide_cursor()
 
             correct_answer = digit_input * digit
@@ -113,7 +108,7 @@ while True:
                 score_change = points_per_correct_answer
                 always_display()
                 print(
-                    f"{answer} is correct! You earned {score_change} memory point{'' if score_change == 1 else 's'}!"
+                    f"Correct! {digit_input} x {digit} = {Colors.BOLD + Colors.UNDERLINE}{answer}{Colors.END}!\nYou earned {score_change} memory point{'' if score_change == 1 else 's'}!"
                 )
                 time.sleep(2)
                 clear_screen()
