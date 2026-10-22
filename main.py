@@ -110,7 +110,7 @@ while True:
                 print(
                     f"Correct! {digit_input} x {digit} = {Colors.BOLD + Colors.UNDERLINE}{answer}{Colors.END}!\nYou earned {score_change} memory point{'' if score_change == 1 else 's'}!"
                 )
-                time.sleep(2)
+                time.sleep(3)
                 clear_screen()
                 break
             else:
